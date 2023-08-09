@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ parent() }} -Edit{% endblock %}
+{% block body %}
+<h1>nom patient {{ordonnance.getNomPatient()}} </h1><br>
+<h1>{{ ordonnance.getCreatedAt()| date ('d-m-y') }}</h1><br>
+<h2>{{ ordonnance.getTotalPrice }}</h2>
+    {% for medicament in listMedicaments %}
+<h3>Medicaments</h3>
+    <ul class="nav nav-pills nav-stacked" >
+
+        <h4>Medicament</h4><br>
+        <li>{{ medicament.nomMed }}</li>
+        <li>{{ medicament.price }}</li>
+        <li>{{ medicament.categorie }}</li>
+
+    </ul>
+    {% endfor %}
+{% endblock %}

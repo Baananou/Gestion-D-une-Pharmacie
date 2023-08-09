@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2>Liste des Medicament | <small>
+            <a href="{{path('Ajout_cand')}}">Ajouter</a></small></h2>
+    {% for msg in app.flashes('notice') %}
+        {{msg}}
+    {% endfor %}
+<table class="table table-hover table-stripped" border="1">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>nom medicament</th>
+        <th>Prix</th>
+        <th>Categorie</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for medicament in lesMedicaments %}
+    <tr>
+        <td>{{ medicament.id }}</td>
+        <td>{{ medicament.nomMed |upper }}</td>
+        <td>{{ medicament.price }}</td>
+        <td>{{ medicament.categorie }}</td>
+        <td>
+            <a class="btn btn-primary" href="#">Voir</a>
+            <a class="btn btn-info" href="#">Modifier</a>
+            <a class="btn btn-danger" href="#">Supprimer</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="5">Aucun medicament</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+{% endblock %}
